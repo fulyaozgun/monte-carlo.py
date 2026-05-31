@@ -1,29 +1,29 @@
 # monte-carlo.py
 import random
 
-def monte_carlo_pi(toplam_nokta):
-    cember_icindeki_noktalar = 0
+def estimate_pi(total_points):
+    points_inside_circle = 0
     
-    for _ in range(toplam_nokta):
-        # 0 ile 1 arasında rastgele x ve y koordinatları üretir
+    for _ in range(total_points):
+        # Generate random x and y coordinates between 0 and 1
         x = random.random()
         y = random.random()
         
-        # Noktanın orijine olan uzaklığının karesi (x^2 + y^2)
-        uzaklik_karesi = x**2 + y**2
+        # Calculate the squared distance from the origin (x^2 + y^2)
+        squared_distance = x**2 + y**2
         
-        # Eğer uzaklık 1'den küçük veya eşitse nokta çemberin içindedir
-        if uzaklik_karesi <= 1:
-            cember_icindeki_noktalar += 1
+        # If the distance is less than or equal to 1, the point is inside the circle
+        if squared_distance <= 1:
+            points_inside_circle += 1
             
-    # Pi sayısı tahmini formülü
-    pi_tahmini = 4 * (cember_icindeki_noktalar / toplam_nokta)
-    return pi_tahmini
+    # Monte Carlo formula to estimate Pi
+    pi_estimate = 4 * (points_inside_circle / total_points)
+    return pi_estimate
 
-# --- Programın Çalıştırılması ---
-# Ödev dökümanında belirtildiği gibi simülasyonu başlatıyoruz [cite: 1, 2]
-deneme_sayisi = 100000
-sonuc = monte_carlo_pi(deneme_sayisi)
+# --- Execution ---
+# You can change the number of points to see how the accuracy changes
+num_points = 100000
+result = estimate_pi(num_points)
 
-print(f"Atılan Toplam Nokta: {deneme_sayisi}")
-print(f"Tahmini Pi Sayısı: {sonuc}")
+print(f"Total points generated: {num_points}")
+print(f"Estimated Pi value: {result}")
