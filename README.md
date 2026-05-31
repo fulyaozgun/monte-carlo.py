@@ -20,8 +20,6 @@ def estimate_pi(total_points):
     pi_estimate = 4 * (points_inside_circle / total_points)
     return pi_estimate
 
-# --- Execution ---
-# You can change the number of points to see how the accuracy changes
 num_points = 100000
 result = estimate_pi(num_points)
 
